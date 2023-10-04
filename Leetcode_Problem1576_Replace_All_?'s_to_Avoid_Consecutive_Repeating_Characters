@@ -1,0 +1,36 @@
+char * modifyString(char * s){
+    char arr[26] = "abcdefghijklmnopqrstuvwxyz";
+    for( int i = 0 ; i < strlen(s) ; i++)
+    {
+        if(s[i] == '?')
+        {
+            for( int j = 0 ; j < 26 ; j++)
+            {
+                if((!i) && s[1] != arr[j])
+                {
+                    s[0] = arr[j];
+                    break;
+                }
+                else if((s[i+1] != arr[j]) && (s[i-1] != arr[j]))
+                {
+                    s[i] = arr[j];
+                    break;
+                } 
+            }
+        }
+    }
+    return s;
+}
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+char * modifyString(char * s){
+    for(int i = 0 ; i < strlen(s) ;i++)
+        if(s[i] == '?') 
+            for(s[i]='a'; (i>0 && s[i]==s[i-1]) || (s[i+1]!='\0' && s[i]==s[i+1]); s[i]++);      
+    return s;
+}
